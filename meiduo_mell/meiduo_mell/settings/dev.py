@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             # 补充Jinja2模板引擎环境
-            'environment': 'meiduo_mall.utils.jinja2_env.jinja2_environment',
+            'environment': 'meiduo_mell.utils.jinja2_env.jinja2_environment',
         },
     },
 ]
@@ -194,3 +194,6 @@ LOGGING = {
         },
     }
 }
+
+
+AUTH_USER_MODEL = 'users.User'
