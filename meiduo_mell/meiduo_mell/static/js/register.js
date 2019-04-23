@@ -3,7 +3,8 @@ var vm = new Vue({
     // 修改Vue变量的读取语法，避免和django模板语法冲突
     delimiters: ['[[', ']]'],
     data: {
-        host: host,
+        // host: host,
+        host,
         error_name: false,
         error_password: false,
         error_check_password: false,
@@ -104,7 +105,7 @@ var vm = new Vue({
         },
         // 检查手机号
         check_phone: function () {
-            var re = /^1[345789]\d{9}$/;
+            var re = /^1[3456789]\d{9}$/;
             if (re.test(this.mobile)) {
                 this.error_phone = false;
             } else {
