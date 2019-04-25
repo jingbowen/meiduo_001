@@ -13,9 +13,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import sys
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+# 当前文件绝对路径
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0,os.path.join(BASE_DIR, "apps"))
+# 补充路径
+sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -24,13 +28,17 @@ sys.path.insert(0,os.path.join(BASE_DIR, "apps"))
 SECRET_KEY = 'sw9_!4p#f%e+6g7!b@_!q05l1q2eh8n56tm%ayg1uck)hpg^6n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# 调试
 DEBUG = True
 
+# 访问设置
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
+# 应用
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +52,7 @@ INSTALLED_APPS = [
 
 ]
 
+# 中间件
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,10 +65,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'meiduo_mell.urls'
 
+
+# 模板引擎
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',  # jinja2模板引擎
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 模板路径
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +85,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'meiduo_mell.wsgi.application'
 
 
@@ -86,6 +98,8 @@ WSGI_APPLICATION = 'meiduo_mell.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, '../../db.sqlite3'),
 #     }
 # }
+
+# 数据库
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # 数据库引擎
@@ -120,8 +134,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
+# 语言码
 LANGUAGE_CODE = 'en-us'
-
+# 时区码
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -133,10 +148,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+#
+# 指定静态文件路径
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+
+# redis库配置
 CACHES = {
     "default": { # 默认
         "BACKEND": "django_redis.cache.RedisCache",
@@ -163,7 +181,7 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
 
-
+# 日志信息配置
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,  # 是否禁用已经存在的日志器
@@ -205,5 +223,7 @@ LOGGING = {
     }
 }
 
-
+# 指定用户模型类
 AUTH_USER_MODEL = 'users.User'
+
+AUTHENTICATION_BACKENDS = ['users.utils.UsernameMobileAuthBackend']
